@@ -13,7 +13,6 @@ import {useEffect, useState} from "react";
 
 const NewProfile = (props) => {
     const [profile, setProfile] = useState({})
-    const [isMatch, setIsMatch] = useState(false)
 
     const matchPerson = (userChoose) => {
         const body = {
@@ -33,28 +32,40 @@ const NewProfile = (props) => {
 
     return (
         <>
-            {profile &&
-            <>
-                <Profile>
-                    <BackgroudBlur Background={profile.photo}/>
+            {profile && (
+                <>
+                    <Profile>
+                        <BackgroudBlur Background={profile.photo} />
 
-                    <PhotoProfile src={profile.photo}/>
+                        <PhotoProfile src={profile.photo} />
 
-                    <InfoProfile>
-                        <h4>{profile.name + ", "}<span>{profile.age}</span></h4>
-                        <p>{profile.bio}</p>
-                    </InfoProfile>
-                </Profile>
+                        <InfoProfile>
+                            <h4>
+                                {profile.name + ', '}
+                                <span>{profile.age}</span>
+                            </h4>
+                            <p>{profile.bio}</p>
+                        </InfoProfile>
+                    </Profile>
 
-
-                <ButtonsContainer>
-                    <OptionButton onClick={() => matchPerson(false)} color={"like"}>X</OptionButton>
-                    <OptionButton onClick={() => matchPerson(true)} color={"deslike"}>🗸</OptionButton>
-                </ButtonsContainer>
-            </>
-            }
+                    <ButtonsContainer>
+                        <OptionButton
+                            onClick={() => matchPerson(false)}
+                            color={'like'}
+                        >
+                            X
+                        </OptionButton>
+                        <OptionButton
+                            onClick={() => matchPerson(true)}
+                            color={'deslike'}
+                        >
+                            ✔️
+                        </OptionButton>
+                    </ButtonsContainer>
+                </>
+            )}
         </>
-    )
+    );
 }
 
 export default NewProfile
